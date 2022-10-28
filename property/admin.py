@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Flat, Сomplaint
+from .models import Flat, Сomplaint, Owner
 
 
 @admin.register(Flat)
@@ -17,3 +17,8 @@ class CategoryAdmin(admin.ModelAdmin):
     # list_display = ('user', 'сomplaint_text')
     raw_id_fields = ('flat', 'user')
 
+
+@admin.register(Owner)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('owner', 'owners_phonenumber', 'owner_pure_phone')
+    raw_id_fields = ('owned_apartments',)

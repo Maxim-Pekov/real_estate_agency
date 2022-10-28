@@ -62,4 +62,10 @@ class Сomplaint(models.Model):
     сomplaint_text = models.TextField('Текст жалобы')
 
 
+class Owner(models.Model):
+    owner = models.CharField('ФИО владельца', max_length=200, default='')
+    owners_phonenumber = models.CharField('Номер владельца', max_length=20, default='')
+    owner_pure_phone = PhoneNumberField('Нормализованный номер владельца', blank=True, default='')
+    owned_apartments = models.ManyToManyField(Flat, related_name="owners", default=None, blank=True, verbose_name='Квартиры в собственности')
+
 
