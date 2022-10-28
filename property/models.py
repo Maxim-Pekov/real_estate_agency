@@ -1,11 +1,13 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class Flat(models.Model):
     owner = models.CharField('ФИО владельца', max_length=200)
     owners_phonenumber = models.CharField('Номер владельца', max_length=20)
     new_building = models.BooleanField('Новостройка', null=True)
+    liked_by = models.ManyToManyField(User, related_name="liked_flats", default=None)
     created_at = models.DateTimeField(
         'Когда создано объявление',
         default=timezone.now,
@@ -53,6 +55,9 @@ class Flat(models.Model):
 
 
 class Сomplaint(models.Model):
-    user = models.CharField('Кто жаловался', max_length=200)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     flat = models.ForeignKey(Flat, on_delete=models.CASCADE, related_name='complaint', verbose_name='Квартира, на которую пожаловались')
     сomplaint_text = models.TextField('Текст жалобы')
+
+
+
