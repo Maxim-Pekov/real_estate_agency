@@ -2,6 +2,11 @@ from django.contrib import admin
 from .models import Flat, Сomplaint, Owner
 
 
+class FlatsOwners(admin.TabularInline):
+    model = Flat.owners.through
+    raw_id_fields = ('owner',)
+
+
 @admin.register(Flat)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('address', 'price', 'new_building', 'construction_year')
@@ -10,6 +15,7 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ('town', 'address', 'owner', 'new_building')
     readonly_fields = ["created_at"]
     raw_id_fields = ('liked_by',)
+    inlines = [FlatsOwners]
 
 
 @admin.register(Сomplaint)
