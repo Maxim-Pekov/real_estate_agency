@@ -20,7 +20,6 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Сomplaint)
 class CategoryAdmin(admin.ModelAdmin):
-    # list_display = ('user', 'сomplaint_text')
     raw_id_fields = ('flat', 'user')
 
 
