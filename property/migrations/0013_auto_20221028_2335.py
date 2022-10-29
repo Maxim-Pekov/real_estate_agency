@@ -22,16 +22,4 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunPython(copy_many_to_many_field),
-        # migrations.RemoveField(
-        #     model_name='flat',
-        #     name='owner',
-        # ),
-        # migrations.RemoveField(
-        #     model_name='flat',
-        #     name='owners_phonenumber',
-        # ),
-        # migrations.RemoveField(
-        #     model_name='flat',
-        #     name='owner_pure_phone',
-        # ),
     ]

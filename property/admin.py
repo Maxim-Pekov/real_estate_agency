@@ -4,7 +4,7 @@ from .models import Flat, Сomplaint, Owner
 
 @admin.register(Flat)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('address', 'price', 'new_building', 'construction_year', 'owners_phonenumber', 'owner_pure_phone')
+    list_display = ('address', 'price', 'new_building', 'construction_year')
     list_editable = ('new_building',)
     list_filter = ('new_building',)
     search_fields = ('town', 'address', 'owner', 'new_building')
