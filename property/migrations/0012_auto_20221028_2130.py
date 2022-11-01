@@ -5,7 +5,8 @@ from django.db import migrations
 def copy_all_owner_to_new_model(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     Owner = apps.get_model('property', 'Owner')
-    for flat in Flat.objects.all():
+    flat_set = Flat.objects.all()
+    for flat in flat_set.iterator():
         owner = flat.owner
         owner_pure_phone = flat.owner_pure_phone
         owners_phonenumber = flat.owners_phonenumber

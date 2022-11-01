@@ -5,7 +5,8 @@ from django.db import migrations
 
 def write_correct_phone_number(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
-    for flat in Flat.objects.all():
+    flats = Flat.objects.all()
+    for flat in flats.iterator():
         try:
             phone_number = phonenumbers.parse(flat.owners_phonenumber, "RU")
             flat.owner_pure_phone = f'+{phone_number.country_code}{phone_number.national_number}'
