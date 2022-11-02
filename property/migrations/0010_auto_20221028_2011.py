@@ -9,9 +9,9 @@ def write_correct_phone_number(apps, schema_editor):
     for flat in flats.iterator():
         try:
             phone_number = phonenumbers.parse(flat.owners_phonenumber, "RU")
-            flat.owner_pure_phone = f'+{phone_number.country_code}{phone_number.national_number}'
+            flat.pure_phone = f'+{phone_number.country_code}{phone_number.national_number}'
         except phonenumbers.phonenumberutil.NumberParseException:
-            flat.owner_pure_phone = ''
+            flat.pure_phone = ''
         flat.save()
 
 class Migration(migrations.Migration):

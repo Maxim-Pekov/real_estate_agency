@@ -7,11 +7,11 @@ def copy_all_owner_to_new_model(apps, schema_editor):
     Owner = apps.get_model('property', 'Owner')
     flat_set = Flat.objects.all()
     for flat in flat_set.iterator():
-        owner = flat.owner
+        full_name = flat.owners
         owner_pure_phone = flat.owner_pure_phone
         owners_phonenumber = flat.owners_phonenumber
-        owners = Owner.objects.get_or_create(owner=owner, owners_phonenumber=owners_phonenumber,
-                                     owner_pure_phone=owner_pure_phone)
+        owners = Owner.objects.get_or_create(owner=full_name, phone_number=owners_phonenumber,
+                                     pure_phone=owner_pure_phone)
 
 
 class Migration(migrations.Migration):

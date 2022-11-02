@@ -8,9 +8,9 @@ def copy_many_to_many_field(apps, schema_editor):
     Owner = apps.get_model('property', 'Owner')
     owners = Owner.objects.all()
     for owner in owners.iterator():
-        flats = Flat.objects.filter(owner_pure_phone=owner.owner_pure_phone)
+        flats = Flat.objects.filter(pure_phone=owner.pure_phone)
         for flat in flats:
-            owner.owned_apartments.add(flat)
+            owner.apartments.add(flat)
             owner.save()
 
 
